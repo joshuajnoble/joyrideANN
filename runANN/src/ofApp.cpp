@@ -10,7 +10,7 @@ void ofApp::setup()
     //int portNumber = atoi(argv[4]);
     
     std::cout << "Loading models..." << std::endl;
-    uint64 start = ofGetElapsedMillis();
+    uint64_t start = ofGetElapsedTimeMillis();
     // Reading neural network
     mlp = cv::ml::ANN_MLP::load<cv::ml::ANN_MLP>(neuralNetworkInputFilename);
     // Read vocabulary
@@ -35,11 +35,11 @@ void ofApp::setup()
     
     // Train FLANN
     std::cout << "Training FLANN..." << std::endl;
-    start = ofGetElapsedMillis();
+    start = ofGetElapsedTimeMillis();
     
     flann.add(vocabulary);
     flann.train();
-    std::cout << "Time elapsed in seconds: " << (ofGetElapsedMillis() - start)/1000 << std::endl;
+    std::cout << "Time elapsed in seconds: " << (ofGetElapsedTimeMillis() - start)/1000 << std::endl;
 }
 
 //--------------------------------------------------------------
@@ -137,7 +137,7 @@ int ofApp::processImage( string file )
     ofPixels p;
     ofLoadImage(p, file);
     
-    long millis = ofGetElapsedTimeMillis();
+    uint64_t millis = ofGetElapsedTimeMillis();
     
     //std::string filename(data_, std::find(data_, data_ + bytes_transferred, '\n') - 1);
     cv::Mat input = ofxCv::toCv(p);

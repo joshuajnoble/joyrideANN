@@ -16,21 +16,6 @@ void annTrain::update()
 
 void annTrain::draw()
 {
-    ofSetColor(255, 255, 255);
-    kazeImage.draw(0, 0);
-    ofNoFill();
-    ofSetColor(0, 255, 255);
-    for ( int i = 0; i < kazeKeypoints.size(); i++ )
-    {
-        ofDrawCircle(kazeKeypoints.at(i).pt.x, kazeKeypoints.at(i).pt.y, 5);
-    }
-}
-
-void annTrain::dragEvent(ofDragInfo dragInfo )
-{
-    
-    cv::Mat mat;
-    processImage( dragInfo.files[0] );
 }
 
 
@@ -392,33 +377,4 @@ int annTrain::train(std::string imagesDir, int networkInputSize, float testRatio
     saveModels(vocabulary, classes);
     
     return 0;
-}
-
-void annTrain::processImage( string file )
-{
-    
-    cout << file << endl;
-    
-    kazeImage.load(file);
-    
-    long millis = ofGetElapsedTimeMillis();
-    
-    cv::Mat input = ofxCv::toCv(kazeImage.getPixels());
-    cv::Mat greyInput;
-    
-    if( input.channels() > 2 )
-    {
-        cv::cvtColor(input, greyInput, CV_BGR2GRAY);
-    }
-    else
-    {
-        greyInput = input;
-    }
-
-    cv::Ptr<cv::KAZE> kaze = cv::KAZE::create();
-
-    kaze->detect(greyInput, kazeKeypoints);
-    kaze->compute(greyInput, kazeKeypoints, kazeDescriptors);
-
-    
 }

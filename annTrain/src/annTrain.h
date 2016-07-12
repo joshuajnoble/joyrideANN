@@ -37,9 +37,7 @@ class annTrain : public ofBaseApp{
     void setup();
     void update();
     void draw();
-    
-    void dragEvent(ofDragInfo dragInfo );
-    void processImage( string file );
+
     
     // our cv functions
     void processClassAndDesc(const std::string& classname, const cv::Mat& descriptors);
@@ -78,8 +76,4 @@ class annTrain : public ofBaseApp{
     
     cv::Ptr<cv::ml::ANN_MLP> mlp;
 
-    std::vector<cv::KeyPoint> kazeKeypoints;
-    cv::Mat kazeDescriptors;
-    ofImage kazeImage;
-    
 };

@@ -10,7 +10,7 @@ void ofApp::setup()
     //int portNumber = atoi(argv[4]);
     
     std::cout << "Loading models..." << std::endl;
-    double start = cv::getTickCount();
+    uint64 start = ofGetElapsedMillis();
     // Reading neural network
     mlp = cv::ml::ANN_MLP::load<cv::ml::ANN_MLP>(neuralNetworkInputFilename);
     // Read vocabulary

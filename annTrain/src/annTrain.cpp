@@ -6,8 +6,7 @@ const int networkInputSize = 512;
 
 void annTrain::setup()
 {
-    //train(ofToDataPath("fingers/all", true), 512, 0.7);
-
+    train(ofToDataPath("fingers/all", true), 512, 0.7);
 }
 
 void annTrain::update()

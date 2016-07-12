@@ -35,36 +35,11 @@ void ofApp::setup()
     
     // Train FLANN
     std::cout << "Training FLANN..." << std::endl;
-    start = cv::getTickCount();
+    start = ofGetElapsedMillis();
     
     flann.add(vocabulary);
     flann.train();
-    std::cout << "Time elapsed in seconds: " << ((double)cv::getTickCount() - start) / cv::getTickFrequency() << std::endl;
-    
-    processImage(ofToDataPath("cat.jpg", true));
-    img.load("cat.jpg");
-    
-    // Socket initialization
-//    std::cout << "Listening to socket on port " << portNumber << "..." << std::endl;
-//    try
-//    {
-//        boost::asio::io_service io_service;
-//        Context* context = new Context;
-//        context->vocabulary = vocabulary;
-//        context->flann = flann;
-//        context->classes = classes;
-//        context->mlp = mlp;
-//        server s(io_service, portNumber, context);
-//        io_service.run();
-//        delete context;
-//    }
-//    catch (std::exception& e)
-//    {
-//        std::cerr << "Exception: " << e.what() << std::endl;
-//        return -1;
-//    }
-//
-//    return 0;
+    std::cout << "Time elapsed in seconds: " << (ofGetElapsedMillis() - start)/1000 << std::endl;
 }
 
 //--------------------------------------------------------------
